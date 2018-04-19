@@ -1,0 +1,9 @@
+.dropdown-menu li, .dropdown-toggle{
+    cursor: pointer;
+}
+.imglogo{
+    height: 50px;
+    width:50px;
+    display: inline;
+    float: right;
+}

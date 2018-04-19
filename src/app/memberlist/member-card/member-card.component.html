@@ -1,0 +1,18 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="panel-image">
+      <img class="thumbnail" src="{{userInput.photoUrl ? userInput.photoUrl : '../../../assets/users.png'}}" alt="{{userInput.knownAs}}">
+      <ul class="list-inline animate member-icons text-center">
+        <li [routerLink]="['/matches/', userInput.id]" routerLinkActive="router-link-active" ><button class="btn btn-primary"><i class="fa fa-user"></i></button></li>
+        <li><button class="btn btn-primary"><i class="fa fa-heart"></i></button></li>
+        <li><button class="btn btn-primary"><i class="fa fa-envelope"></i></button></li>
+      </ul>
+    </div>
+    <div class="text-center">
+      <h5><i class="fa fa-user"></i> {{userInput.knownAs}}, {{userInput.age}}</h5>
+    </div>
+    <div class="text-center">
+      <small>{{userInput.country}}</small>
+    </div>
+  </div>
+</div>

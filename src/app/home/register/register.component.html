@@ -1,0 +1,92 @@
+<form [formGroup]="registerReactiveForm" (ngSubmit)="Register()" >
+  <h1>Sign up</h1>
+    <hr>
+    <div class="form-group">
+      <label class="control-label">Iam a : </label>
+      <label class="radio-inline">
+        <input type="radio" value="male" formControlName="gender">Male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" value="female" formControlName="gender">Female
+      </label>
+    </div>
+
+    <div class="form-group" [ngClass]="{'has-error': registerReactiveForm.get('knownAs').errors && registerReactiveForm.get('knownAs').touched}">
+        <input type="text" class="form-control" formControlName="knownAs" placeholder="known As">
+        <span class="help-block" *ngIf=" registerReactiveForm.get('knownAs').hasError('required') && registerReactiveForm.get('knownAs').touched"> 
+            known As is Required
+        </span>
+      </div> 
+
+      <div class="form-group" [ngClass]="{'has-error': registerReactiveForm.get('dateOfBirth').errors && registerReactiveForm.get('dateOfBirth').touched}">
+          <input type="text" bsDatepicker [bsConfig]="datepickerconfig" class="form-control"  placeholder="mm/dd/yyyy" formControlName="dateOfBirth" >
+          <span class="help-block" *ngIf=" registerReactiveForm.get('dateOfBirth').hasError('required') && registerReactiveForm.get('dateOfBirth').touched"> 
+              date Of Birth is Required
+          </span>
+        </div> 
+
+        <div class="form-group" [ngClass]="{'has-error': registerReactiveForm.get('city').errors && registerReactiveForm.get('city').touched}">
+            <input type="text" class="form-control" formControlName="city" placeholder="City">
+            <span class="help-block" *ngIf=" registerReactiveForm.get('city').hasError('required') && registerReactiveForm.get('city').touched"> 
+                city is Required
+            </span>
+          </div> 
+          <div class="form-group" [ngClass]="{'has-error': registerReactiveForm.get('country').errors && registerReactiveForm.get('country').touched}">
+              <input type="text" class="form-control" formControlName="country" placeholder="Country">
+              <span class="help-block" *ngIf=" registerReactiveForm.get('country').hasError('required') && registerReactiveForm.get('country').touched"> 
+                  country is Required
+              </span>
+            </div> 
+    <div class="form-group" [ngClass]="{'has-error': registerReactiveForm.get('username').errors && registerReactiveForm.get('username').touched}">
+      <input type="text" class="form-control" formControlName="username" placeholder="Username">
+      <span class="help-block" *ngIf=" registerReactiveForm.get('username').hasError('required') && registerReactiveForm.get('username').touched"> 
+        Username is Required
+      </span>
+    </div>  
+
+    <div 
+      class="form-group" 
+      [ngClass]="{'has-error': registerReactiveForm.get('password').errors 
+        && registerReactiveForm.get('password').touched}">
+      <input type="text" class="form-control" formControlName="password" placeholder="Password">
+      <span class="help-block" 
+        *ngIf="registerReactiveForm.get('password').hasError('required') 
+          && registerReactiveForm.get('password').touched"> 
+        Password is Required
+      </span>
+      <span class="help-block" 
+        *ngIf=" registerReactiveForm.get('password').hasError('minlength')
+          && registerReactiveForm.get('password').touched"> 
+          Password minimum length is 4
+        </span>
+        <span class="help-block" 
+          *ngIf=" registerReactiveForm.get('password').hasError('maxlength')
+            && registerReactiveForm.get('password').touched"> 
+            Password maximum length is 8
+          </span>
+    </div>
+
+    <div class="form-group" 
+      [ngClass]="{'has-error': registerReactiveForm.get('confirmPassword').errors
+        && registerReactiveForm.get('confirmPassword').touched
+          ||  registerReactiveForm.hasError('mismatch') && registerReactiveForm.get('confirmPassword').touched }">
+
+      <input type="text" class="form-control" formControlName="confirmPassword" placeholder="Confirm Password">
+
+      <span class="help-block" 
+        *ngIf="registerReactiveForm.get('confirmPassword').hasError('required')
+          && registerReactiveForm.get('confirmPassword').touched"> 
+          Confirm Password is Required
+        </span>
+
+        <span class="help-block" 
+          *ngIf=" registerReactiveForm.hasError('mismatch') && registerReactiveForm.get('confirmPassword').touched"> 
+            Password mismatch
+          </span>
+    </div>
+    <div class="form-group text-center">
+      <button class="btn btn-success"[disabled]="!registerReactiveForm.valid" type="submit">Register</button>
+      <button class="btn btn-danger" type="button" (click)="cancelRegister()">Cancel</button>
+
+    </div>
+</form>

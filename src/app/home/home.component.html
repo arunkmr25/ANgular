@@ -1,0 +1,17 @@
+<div style="text-align: center">
+  <div *ngIf="!ToggleRegister">
+    <h1>
+      Find your Match
+    </h1>
+    <p class="lead"> Come and see your matches.. All you need to do is Sign up !!</p>
+    <div class="text-center">
+      <button class="btn btn-primary " (click)="refistrToggle()">Register</button>
+      <button class="btn btn-primary">Learn more</button>
+    </div>
+  </div>
+  <div class="container" *ngIf="ToggleRegister">
+    <div class="col-md-4 col-md-offset-4">
+      <app-register (OutputFormValue)=cancelRegister($event)></app-register>
+    </div>
+  </div>
+</div>

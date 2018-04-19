@@ -1,0 +1,58 @@
+<nav class="navbar navbar-default">
+  <div class="container">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+      aria-controls="navbar">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="navbar-brand" [routerLink]="['/home']"  >Connections</a>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav" *ngIf="loggedin()">
+        <li routerLinkActive="active">
+          <a [routerLink]="['/matches']"  >Matches</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/list']">List</a>
+        </li>
+        <li routerLinkActive="active">
+          <a [routerLink]="['/messages']">Messages</a>
+        </li>
+      </ul>
+
+      <form class="navbar-form navbar-right" *ngIf="!loggedin()" #loginForm="ngForm" (ngSubmit)="login()">
+        <div class="form-group">
+          <input type="text" placeholder="Email" class="form-control" name="Username" required [(ngModel)]="loginModel.Username">
+        </div>
+        <div class="form-group">
+          <input type="password" placeholder="Password" class="form-control" name="Password" required [(ngModel)]="loginModel.Password">
+        </div>
+        <button type="submit" [disabled]="!loginForm.valid" class="btn btn-success">Sign in</button>
+      </form>
+
+      <ul *ngIf="loggedin()" class="nav navbar-nav navbar-right">
+          <li>
+        <img src="{{photoNavUrl}}" class="imglogo" alt="">
+        </li> 
+        <li class="dropdown" dropdown>
+          <a class="dropdown-toggle" dropdownToggle>Welcome {{auth.decodeToken?.unique_name | titlecase}}
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu" *dropdownMenu>
+            <li>
+              <a [routerLink]="['/member/edit']">
+                <span class="fa fa-user"></span> Edit Profile</a>
+            </li>
+            <li role="separator" class="divider"></li>
+            <li>
+              <a (click)="Logout()">
+                <span class="fa fa-sign-out"></span> Logout</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <!--/.navbar-collapse -->
+  </div>
+</nav>

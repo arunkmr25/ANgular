@@ -1,0 +1,44 @@
+.panel-body{
+    padding: 5px;
+}
+.panel-body img{
+    width: 100%;
+}
+img{
+    transform: scale(1,1);
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+}
+.panel:hover img{
+    transform: scale(1.2,1.2);    
+    transition-duration: 500ms;
+    transition-timing-function: ease-out;
+    opacity: .7;
+}
+.panel-image{
+    overflow: hidden;
+}
+.member-icons{
+    position: absolute;
+    bottom:-30px;
+    left:0;
+    right:0;
+    margin-right:auto;
+    margin-left: auto;
+    opacity: 0;
+}
+.panel:hover .member-icons{
+    opacity: 1;
+    bottom: 80px;
+}
+.animate{
+    transition: all .3s ease-in-out;
+}
+
+@media(max-width:768px){
+    .btn{
+        padding: 2px 4px;
+        font-size: 80%;
+        line-height: 1;
+    }
+}

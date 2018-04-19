@@ -1,0 +1,17 @@
+.profile-image{
+    overflow: hidden;
+}
+.panel-body{
+    padding: 20px;
+}
+img{
+    width: 100%;
+}
+.panel-footer{
+    padding:20px;
+    border-color: white;
+
+}
+.btn-group .btn{
+    width:100%;
+}
